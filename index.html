@@ -113,9 +113,7 @@ const K='plan_correos_mx';let S={};try{S=JSON.parse(localStorage.getItem(K)||'{}
 const g=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 document.querySelectorAll('input[type=radio]').forEach(r=>{if(S[r.name]===r.value)r.checked=true;r.onchange=()=>{S[r.name]=r.value;g();};});
 const nt=document.getElementById('notas');nt.value=S.notas||'';nt.oninput=()=>{S.notas=nt.value;g();};
-document.getElementById('copiar').onclick=()=>{const t=['PLAN DE CORREOS MÉXICO — respuestas de Alessandro','1. Plan: '+(S.plan||'—'),'2. Remitente: '+(S.remitente||'—'),'3. Descuento: '+(S.descuento||'—'),'4. Dudas: '+(S.dudas||'—')+(S.notas?'
-Notas: '+S.notas:'')].join('
-');
+document.getElementById('copiar').onclick=()=>{const t=['PLAN DE CORREOS MÉXICO — respuestas de Alessandro','1. Plan: '+(S.plan||'—'),'2. Remitente: '+(S.remitente||'—'),'3. Descuento: '+(S.descuento||'—'),'4. Dudas: '+(S.dudas||'—')+(S.notas?'\nNotas: '+S.notas:'')].join('\n');
 const e=document.getElementById('est');navigator.clipboard.writeText(t).then(()=>e.textContent='Copiado. Pégalo en WhatsApp.').catch(()=>{nt.value=t;nt.select();e.textContent='Selecciona el texto de la casilla y cópialo.';});};
 </script>
 </body></html>
