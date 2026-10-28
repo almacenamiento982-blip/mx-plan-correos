@@ -98,8 +98,7 @@ textarea{width:100%;min-height:70px;margin:10px 0;background:#0f0f11;color:var(-
   <div class="op"><label><input type="radio" name="remitente" value="info@juventuscampsmx.com"> juventuscampsmx.com</label><label><input type="radio" name="remitente" value="info@juventuscampsusa.com"> juventuscampsusa.com</label></div></div>
  <div class="item"><p class="q">3. Descuento en el último correo del histórico</p><p class="nota">En años anteriores la mayoría de los pagos de México fue con cupón. Si hay descuento, indicar código y monto.</p>
   <div class="op"><label><input type="radio" name="descuento" value="Sí, con descuento"> Sí</label><label><input type="radio" name="descuento" value="Precio completo"> Precio completo</label><label><input type="radio" name="descuento" value="Lo define Jesús"> Lo define Jesús</label></div></div>
- <div class="item"><p class="q">4. Canal para dudas</p><p class="nota">El botón de ayuda va a Instagram @juventuscampsmx. Si hay un WhatsApp de México que alguien atienda, se cambia.</p>
-  <div class="op"><label><input type="radio" name="dudas" value="Instagram"> Instagram</label><label><input type="radio" name="dudas" value="WhatsApp"> WhatsApp (indicar número)</label></div></div>
+ <div class="item"><p class="q">4. Canal para dudas</p><p class="nota">Decidido: solo mensajes por Instagram a @juventuscampsmx (el correo info@juventuscampsmx.com no se atiende).</p></div>
  <textarea id="notas" placeholder="Cambios, código de descuento, número de WhatsApp…"></textarea>
  <button type="button" class="btn" id="copiar">Copiar respuestas</button><div id="est"></div>
 </div>
@@ -113,7 +112,7 @@ const K='plan_correos_mx';let S={};try{S=JSON.parse(localStorage.getItem(K)||'{}
 const g=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 document.querySelectorAll('input[type=radio]').forEach(r=>{if(S[r.name]===r.value)r.checked=true;r.onchange=()=>{S[r.name]=r.value;g();};});
 const nt=document.getElementById('notas');nt.value=S.notas||'';nt.oninput=()=>{S.notas=nt.value;g();};
-document.getElementById('copiar').onclick=()=>{const t=['PLAN DE CORREOS MÉXICO — respuestas de Alessandro','1. Plan: '+(S.plan||'—'),'2. Remitente: '+(S.remitente||'—'),'3. Descuento: '+(S.descuento||'—'),'4. Dudas: '+(S.dudas||'—')+(S.notas?'\nNotas: '+S.notas:'')].join('\n');
+document.getElementById('copiar').onclick=()=>{const t=['PLAN DE CORREOS MÉXICO — respuestas de Alessandro','1. Plan: '+(S.plan||'—'),'2. Remitente: '+(S.remitente||'—'),'3. Descuento: '+(S.descuento||'—'),'4. Dudas: Instagram (decidido)'+(S.notas?'\nNotas: '+S.notas:'')].join('\n');
 const e=document.getElementById('est');navigator.clipboard.writeText(t).then(()=>e.textContent='Copiado. Pégalo en WhatsApp.').catch(()=>{nt.value=t;nt.select();e.textContent='Selecciona el texto de la casilla y cópialo.';});};
 </script>
 </body></html>
