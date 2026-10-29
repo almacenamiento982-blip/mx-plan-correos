@@ -94,8 +94,7 @@ textarea{width:100%;min-height:70px;margin:10px 0;background:#0f0f11;color:var(-
  <p class="nota">Exportar el histórico de México desde el admin de la app: <b>aprobado</b>, se prepara la base.</p>
  <div class="item"><p class="q">1. Plan de correos</p><p class="nota">Los tres grupos y las fechas de arriba.</p>
   <div class="op"><label><input type="radio" name="plan" value="Aprobado"> Aprobado</label><label><input type="radio" name="plan" value="Con cambios"> Con cambios</label></div></div>
- <div class="item"><p class="q">2. Remitente</p><p class="nota">Hoy el remitente verificado es info@juventuscampsusa.com. Para México lo ideal es info@juventuscampsmx.com (la casilla recibe un correo de confirmación para verificarlo).</p>
-  <div class="op"><label><input type="radio" name="remitente" value="info@juventuscampsmx.com"> juventuscampsmx.com</label><label><input type="radio" name="remitente" value="info@juventuscampsusa.com"> juventuscampsusa.com</label></div></div>
+ <div class="item"><p class="q">2. Remitente</p><p class="nota">Decidido (David, 28-10): sale con el nombre <b>Juventus Camps México</b> desde info@juventuscampsusa.com, la dirección ya verificada y firmada. Los correos de USA siguen como Juventus Camps USA. Se empieza por las familias más recientes y se revisan rebotes después del primer envío.</p></div>
  <div class="item"><p class="q">3. Descuento en el último correo del histórico</p><p class="nota">En años anteriores la mayoría de los pagos de México fue con cupón. Si hay descuento, indicar código y monto.</p>
   <div class="op"><label><input type="radio" name="descuento" value="Sí, con descuento"> Sí</label><label><input type="radio" name="descuento" value="Precio completo"> Precio completo</label><label><input type="radio" name="descuento" value="Lo define Jesús"> Lo define Jesús</label></div></div>
  <div class="item"><p class="q">4. Canal para dudas</p><p class="nota">Decidido: solo mensajes por Instagram a @juventuscampsmx (el correo info@juventuscampsmx.com no se atiende).</p></div>
@@ -112,7 +111,7 @@ const K='plan_correos_mx';let S={};try{S=JSON.parse(localStorage.getItem(K)||'{}
 const g=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 document.querySelectorAll('input[type=radio]').forEach(r=>{if(S[r.name]===r.value)r.checked=true;r.onchange=()=>{S[r.name]=r.value;g();};});
 const nt=document.getElementById('notas');nt.value=S.notas||'';nt.oninput=()=>{S.notas=nt.value;g();};
-document.getElementById('copiar').onclick=()=>{const t=['PLAN DE CORREOS MÉXICO — respuestas de Alessandro','1. Plan: '+(S.plan||'—'),'2. Remitente: '+(S.remitente||'—'),'3. Descuento: '+(S.descuento||'—'),'4. Dudas: Instagram (decidido)'+(S.notas?'\nNotas: '+S.notas:'')].join('\n');
+document.getElementById('copiar').onclick=()=>{const t=['PLAN DE CORREOS MÉXICO — respuestas de Alessandro','1. Plan: '+(S.plan||'—'),'2. Remitente: Juventus Camps México <info@juventuscampsusa.com> (decidido)','3. Descuento: '+(S.descuento||'—'),'4. Dudas: Instagram (decidido)'+(S.notas?'\nNotas: '+S.notas:'')].join('\n');
 const e=document.getElementById('est');navigator.clipboard.writeText(t).then(()=>e.textContent='Copiado. Pégalo en WhatsApp.').catch(()=>{nt.value=t;nt.select();e.textContent='Selecciona el texto de la casilla y cópialo.';});};
 </script>
 </body></html>
